@@ -1,0 +1,135 @@
+---
+layout: single
+---
+
+{% assign all_tags = "" | split: "" %}
+{% for pub in site.data.publications %}
+  {% for tag in pub.tags %}
+    {% unless all_tags contains tag %}
+      {% assign all_tags = all_tags | push: tag %}
+    {% endunless %}
+  {% endfor %}
+{% endfor %}
+{% assign all_tags = all_tags | sort %}
+
+<div class="research-page">
+
+  <!-- Filter Controls -->
+  <div class="filter-section">
+    <div class="filter-row">
+      <div class="type-filters">
+        <span class="filter-label">Type:</span>
+        <button class="type-btn active" data-type="all">All</button>
+        <button class="type-btn" data-type="journal_article"><span class="badge badge-journal">Journal Article</span></button>
+        <button class="type-btn" data-type="working_paper"><span class="badge badge-working">Working Paper</span></button>
+        <button class="type-btn" data-type="under_review"><span class="badge badge-review">Under Review</span></button>
+        <button class="type-btn" data-type="book_chapter"><span class="badge badge-chapter">Book Chapter</span></button>
+        <button class="type-btn" data-type="other"><span class="badge badge-other">Other</span></button>
+      </div>
+    </div>
+    <div class="filter-row">
+      <span class="filter-label">Topic:</span>
+      <div class="tag-filter-group">
+        <button class="tag-btn active" data-tag="all">All</button>
+        {% for tag in all_tags %}
+        <button class="tag-btn" data-tag="{{ tag | slugify }}">{{ tag }}</button>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="filter-row">
+      <span id="pub-count" class="pub-count"></span>
+      <button id="clear-filters" class="clear-btn" style="display:none;">Clear filters</button>
+    </div>
+  </div>
+
+  <!-- Publications List -->
+  <div class="publications-list" id="publications-list">
+    {% assign pubs_sorted = site.data.publications | sort: "year" | reverse %}
+    {% for pub in pubs_sorted %}
+      {% unless pub.type == "book" %}
+      <div class="pub-entry"
+           data-type="{{ pub.type }}"
+           data-tags="{% for tag in pub.tags %}{{ tag | slugify }} {% endfor %}"
+           data-title="{{ pub.title | downcase }}"
+           data-authors="{{ pub.authors | downcase }}">
+
+        <div class="pub-header">
+          <div class="pub-type-badge">
+            {% if pub.type == "journal_article" %}
+              <span class="badge badge-journal">Journal Article</span>
+            {% elsif pub.type == "working_paper" %}
+              <span class="badge badge-working">Working Paper</span>
+            {% elsif pub.type == "under_review" %}
+              <span class="badge badge-review">Under Review</span>
+            {% elsif pub.type == "book_chapter" %}
+              <span class="badge badge-chapter">Book Chapter</span>
+            {% elsif pub.type == "other" %}
+              <span class="badge badge-other">Other</span>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="pub-title">
+          {% if pub.links.published and pub.links.published != "" %}
+            <a href="{{ pub.links.published }}" target="_blank">{{ pub.title }}</a>
+          {% elsif pub.links.preprint and pub.links.preprint != "" %}
+            <a href="{{ pub.links.preprint }}" target="_blank">{{ pub.title }}</a>
+          {% else %}
+            {{ pub.title }}
+          {% endif %}
+        </div>
+
+        <div class="pub-meta">
+          {{ pub.authors }}
+          {% if pub.venue %} · <em>{{ pub.venue }}</em>{% endif %}
+          {% if pub.volume_issue_pages and pub.volume_issue_pages != "" %} · {{ pub.volume_issue_pages }}{% endif %}
+          {% if pub.year_display %} · {{ pub.year_display }}
+          {% elsif pub.year < 9999 %} · {{ pub.year }}{% endif %}
+        </div>
+
+        {% if pub.awards and pub.awards.size > 0 %}
+        <div class="pub-awards">
+          {% for award in pub.awards %}
+          <span class="award-pill"><i class="fas fa-award"></i> {{ award }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if pub.abstract and pub.abstract != "" %}
+        <div class="pub-abstract-toggle">
+          <button class="abstract-btn" onclick="toggleAbstract(this)">Abstract ▼</button>
+          <div class="pub-abstract" style="display:none;">
+            <p>{{ pub.abstract }}</p>
+          </div>
+        </div>
+        {% endif %}
+
+        <div class="pub-links">
+          {% if pub.links.preprint and pub.links.preprint != "" %}
+            <a href="{{ pub.links.preprint }}" class="pub-link" target="_blank">Pre-print</a>
+          {% endif %}
+          {% if pub.links.published and pub.links.published != "" %}
+            <a href="{{ pub.links.published }}" class="pub-link" target="_blank">Published version</a>
+          {% endif %}
+          {% if pub.links.appendix and pub.links.appendix != "" %}
+            <a href="{{ pub.links.appendix }}" class="pub-link" target="_blank">Appendix</a>
+          {% endif %}
+          {% if pub.links.replication and pub.links.replication != "" %}
+            <a href="{{ pub.links.replication }}" class="pub-link" target="_blank">Replication data</a>
+          {% endif %}
+        </div>
+
+        <div class="pub-tags">
+          {% for tag in pub.tags %}
+          <span class="pub-tag" data-tag="{{ tag | slugify }}">{{ tag }}</span>
+          {% endfor %}
+        </div>
+
+      </div>
+      {% endunless %}
+    {% endfor %}
+  </div>
+
+</div>
+
+<script src="/assets/js/research-filter.js"></script>

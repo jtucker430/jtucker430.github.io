@@ -1,0 +1,88 @@
+---
+layout: single
+---
+
+{% assign about = site.data.site_content.about %}
+{% assign contact = site.data.site_content.contact %}
+{% assign commentary = site.data.site_content.commentary %}
+
+<div class="home-hero">
+  <h1 class="page-title">{{ about.name }}</h1>
+  <p class="home-title">{{ about.title }}</p>
+  <p class="home-dept">{{ about.department }}</p>
+  <div class="home-affiliations">
+    {% for role in about.roles %}
+    <span class="affil-badge">{{ role }}</span>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="home-bio">
+  <p>{{ about.bio_full }}</p>
+</div>
+
+<div class="home-interests">
+  <h3>Research Interests</h3>
+  <div class="interest-tags">
+    {% for interest in about.research_interests %}
+    <span class="interest-tag">{{ interest }}</span>
+    {% endfor %}
+  </div>
+</div>
+
+{% if about.awards %}
+<div class="home-awards">
+  <h3>Recent Recognition</h3>
+  <ul class="awards-list">
+    {% assign sorted_awards = about.awards | sort: "year" | reverse %}
+    {% for award in sorted_awards limit:4 %}
+    <li><span class="award-year">{{ award.year }}</span> {{ award.title }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<div class="home-recent-pubs">
+  <h3>Recent Publications <a href="/research/" class="see-all-link">See all →</a></h3>
+  <div class="pub-list-home">
+    {% assign pubs = site.data.publications | sort: "year" | reverse %}
+    {% assign count = 0 %}
+    {% for pub in pubs %}
+      {% if count < 5 and pub.type != "book" %}
+        {% assign count = count | plus: 1 %}
+        <div class="pub-item-home">
+          <div class="pub-title-home"><a href="/research/">{{ pub.title }}</a></div>
+          <div class="pub-meta-home">{{ pub.authors }} <em>{{ pub.venue }}</em>{% if pub.year_display %}, {{ pub.year_display }}{% elsif pub.year < 9999 %}, {{ pub.year }}{% endif %}</div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<div class="home-links">
+  <h3>Links</h3>
+  <div class="link-grid">
+    <a href="{{ contact.links.google_scholar }}" class="link-btn" target="_blank">
+      <i class="fas fa-graduation-cap"></i> Google Scholar
+    </a>
+    {% if contact.links.bluesky and contact.links.bluesky != "" %}
+    <a href="{{ contact.links.bluesky }}" class="link-btn" target="_blank">
+      <i class="fas fa-cloud"></i> Bluesky
+    </a>
+    {% endif %}
+    <a href="{{ contact.links.csmap }}" class="link-btn" target="_blank">
+      <i class="fas fa-building"></i> CSMAP
+    </a>
+    <a href="{{ contact.links.jordan_center }}" class="link-btn" target="_blank">
+      <i class="fas fa-university"></i> Jordan Center
+    </a>
+    {% if contact.links.linkedin and contact.links.linkedin != "" %}
+    <a href="{{ contact.links.linkedin }}" class="link-btn" target="_blank">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    {% endif %}
+    <a href="/assets/Tucker_CV.pdf" class="link-btn" target="_blank">
+      <i class="fas fa-file-pdf"></i> Download CV
+    </a>
+  </div>
+</div>

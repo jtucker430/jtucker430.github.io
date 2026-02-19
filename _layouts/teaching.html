@@ -1,0 +1,55 @@
+---
+layout: single
+---
+
+{% assign teaching = site.data.site_content.teaching %}
+
+<div class="teaching-page">
+
+  <h2>Graduate Courses</h2>
+  <div class="course-list">
+    {% for course in teaching.graduate %}
+    <div class="course-entry">
+      <div class="course-title">
+        {% if course.syllabus_url and course.syllabus_url != "" %}
+          <a href="{{ course.syllabus_url }}" target="_blank">{{ course.title }}</a>
+        {% else %}
+          {{ course.title }}
+        {% endif %}
+      </div>
+      <div class="course-meta">
+        {{ course.institution }}
+        {% if course.code %} · {{ course.code }}{% endif %}
+        · {{ course.semesters | join: ", " }}
+        {% if course.syllabus_url and course.syllabus_url != "" %}
+          · <a href="{{ course.syllabus_url }}" target="_blank">Syllabus</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <h2>Undergraduate Courses</h2>
+  <div class="course-list">
+    {% for course in teaching.undergraduate %}
+    <div class="course-entry">
+      <div class="course-title">
+        {% if course.syllabus_url and course.syllabus_url != "" %}
+          <a href="{{ course.syllabus_url }}" target="_blank">{{ course.title }}</a>
+        {% else %}
+          {{ course.title }}
+        {% endif %}
+      </div>
+      <div class="course-meta">
+        {{ course.institution }}
+        {% if course.code %} · {{ course.code }}{% endif %}
+        · {{ course.semesters | join: ", " }}
+        {% if course.syllabus_url and course.syllabus_url != "" %}
+          · <a href="{{ course.syllabus_url }}" target="_blank">Syllabus</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>

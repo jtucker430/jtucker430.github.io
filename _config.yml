@@ -1,0 +1,135 @@
+# =============================================================================
+# Joshua A. Tucker — Academic Website
+# Jekyll + Minimal Mistakes
+# =============================================================================
+
+# Theme
+theme: minimal-mistakes-jekyll
+minimal_mistakes_skin: "default"  # overridden by custom CSS
+
+# Site settings
+title: "Joshua A. Tucker"
+subtitle: "Professor of Politics, NYU"
+name: "Joshua A. Tucker"
+description: "Julius Silver, Roslyn S. Silver, and Enid Silver Winslow Professor of Politics at New York University. Director, Jordan Center. Co-Director, CSMAP."
+url: "https://jtucker430.github.io"
+baseurl: ""
+repository: "jtucker430/jtucker430.github.io"
+
+# Author (Minimal Mistakes sidebar)
+author:
+  name: "Joshua A. Tucker"
+  avatar: "/assets/images/headshot.jpg"
+  bio: "Julius Silver Professor of Politics at NYU. Director, Jordan Center. Co-Director, CSMAP."
+  location: "New York, NY"
+  email: "joshua.tucker@nyu.edu"
+  links:
+    - label: "Google Scholar"
+      icon: "fas fa-fw fa-graduation-cap"
+      url: "https://scholar.google.com/citations?user=fc0VgPAAAAAJ&hl=en"
+    - label: "Bluesky"
+      icon: "fas fa-fw fa-cloud"
+      url: "https://bsky.app/profile/jatucker.bsky.social"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/jtucker430"
+    - label: "CSMAP"
+      icon: "fas fa-fw fa-building"
+      url: "https://csmapnyu.org"
+    - label: "Jordan Center"
+      icon: "fas fa-fw fa-university"
+      url: "https://jordanrussiacenter.org/"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/joshua-tucker-b016b624/"
+
+# Footer
+footer:
+  links:
+    - label: "Google Scholar"
+      icon: "fas fa-fw fa-graduation-cap"
+      url: "https://scholar.google.com/citations?user=fc0VgPAAAAAJ&hl=en"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/jtucker430"
+
+# Reading files
+include:
+  - .htaccess
+  - _pages
+
+exclude:
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - vendor
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - assets/js/plugins
+  - assets/js/_main.js
+  - assets/js/vendor
+  - Capfile
+  - CHANGELOG
+  - config
+  - Gemfile
+  - Gruntfile.js
+  - gulpfile.js
+  - LICENSE
+  - log
+  - node_modules
+  - package.json
+  - Rakefile
+  - README
+  - tmp
+
+# Collections
+collections:
+  commentary:
+    output: true
+    permalink: /:collection/:path/
+
+# Defaults
+defaults:
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+  # _commentary
+  - scope:
+      path: ""
+      type: commentary
+    values:
+      layout: single
+      author_profile: true
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-include-cache
+
+# Markdown
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Encoding
+encoding: "utf-8"
+
+# Google Analytics (add your ID later)
+# analytics:
+#   provider: "google-gtag"
+#   google:
+#     tracking_id: ""

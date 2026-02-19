@@ -1,0 +1,43 @@
+---
+layout: single
+---
+
+{% assign books = site.data.site_content.books %}
+
+<div class="books-page">
+  {% for book in books %}
+  <div class="book-entry">
+    <div class="book-content">
+      <h2 class="book-title">
+        {% if book.purchase_url and book.purchase_url != "" %}
+          <a href="{{ book.purchase_url }}" target="_blank"><em>{{ book.title }}</em></a>
+        {% else %}
+          <em>{{ book.title }}</em>
+        {% endif %}
+      </h2>
+      <p class="book-authors">{{ book.authors }}</p>
+      <p class="book-publisher">
+        {{ book.publisher }}, {{ book.year }}
+        {% if book.series %} · {{ book.series }}{% endif %}
+      </p>
+      <p class="book-description">{{ book.description }}</p>
+
+      {% if book.reviews and book.reviews != "" %}
+      <p class="book-reviews"><em>Reviews: {{ book.reviews }}</em></p>
+      {% endif %}
+
+      <div class="book-links">
+        {% if book.purchase_url and book.purchase_url != "" %}
+          <a href="{{ book.purchase_url }}" class="btn btn--primary" target="_blank">Purchase</a>
+        {% endif %}
+        {% if book.open_access_url and book.open_access_url != "" %}
+          <a href="{{ book.open_access_url }}" class="btn btn--inverse" target="_blank">Open Access</a>
+        {% endif %}
+        {% if book.appendix_url and book.appendix_url != "" %}
+          <a href="{{ book.appendix_url }}" class="btn btn--inverse" target="_blank">Statistical Appendix</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

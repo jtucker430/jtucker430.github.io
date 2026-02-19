@@ -1,0 +1,17 @@
+main:
+  - title: "About"
+    url: /
+  - title: "Research"
+    url: /research/
+  - title: "Books"
+    url: /books/
+  - title: "Teaching"
+    url: /teaching/
+  - title: "Media"
+    url: /media/
+  - title: "Commentary"
+    url: /commentary/
+  - title: "CV"
+    url: /cv/
+  - title: "Contact"
+    url: /contact/

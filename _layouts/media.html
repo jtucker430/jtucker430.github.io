@@ -1,0 +1,45 @@
+---
+layout: single
+---
+
+{% assign media = site.data.site_content.media %}
+
+<div class="media-page">
+
+  <h2>In the Press</h2>
+  <div class="media-list">
+    {% assign press_sorted = media.press | sort: "date" | reverse %}
+    {% for item in press_sorted %}
+    <div class="media-entry">
+      <div class="media-outlet">{{ item.outlet }}</div>
+      <div class="media-title">
+        {% if item.url and item.url != "" %}
+          <a href="{{ item.url }}" target="_blank">{{ item.title }}</a>
+        {% else %}
+          {{ item.title }}
+        {% endif %}
+      </div>
+      <div class="media-date">{{ item.date | date: "%B %-d, %Y" }}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <h2>Multimedia</h2>
+  <div class="media-list">
+    {% assign multimedia_sorted = media.multimedia | sort: "date" | reverse %}
+    {% for item in multimedia_sorted %}
+    <div class="media-entry">
+      <div class="media-outlet">{{ item.outlet }}</div>
+      <div class="media-title">
+        {% if item.url and item.url != "" %}
+          <a href="{{ item.url }}" target="_blank">{{ item.title }}</a>
+        {% else %}
+          {{ item.title }}
+        {% endif %}
+      </div>
+      <div class="media-date">{{ item.date | date: "%B %-d, %Y" }}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
