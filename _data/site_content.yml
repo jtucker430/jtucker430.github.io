@@ -9,20 +9,24 @@ about:
   - Director, NYU Jordan Center for Advanced Study of Russia
   - Co-Director, NYU Center for Social Media and Politics (CSMAP)
   photo_url: https://wp.nyu.edu/fas-joshuatucker/wp-content/uploads/sites/1941/2021/10/2021_07_Headshot-scaled.jpeg
-  bio_short: 'Joshua A. Tucker is a Julius Silver, Roslyn S. Silver, and Enid Silver
-    Winslow Professor, Director of the Jordan Center for the Advanced Study of Russia, Co-Director of the NYU Center for Social Media, AI, and Politcs (CSMAP), Professor of Politics with affiliated appointments
-    in Russian and Slavic Studies and Data Science at New York University.'
+  bio_short: Joshua A. Tucker is a Julius Silver, Roslyn S. Silver, and Enid Silver
+    Winslow Professor, Director of the Jordan Center for the Advanced Study of Russia,
+    Co-Director of the NYU Center for Social Media, AI, and Politcs (CSMAP), Professor
+    of Politics with affiliated appointments in Russian and Slavic Studies and Data
+    Science at New York University.
   bio_full: 'Joshua A. Tucker is a Julius Silver, Roslyn S. Silver, and Enid Silver
-    Winslow Professor, Director of the Jordan Center for the Advanced Study of Russia, Co-Director of the NYU Center for Social Media, AI, and Politcs (CSMAP), Professor of Politics with affiliated appointments
-    in Russian and Slavic Studies and Data Science at New York University.
+    Winslow Professor, Director of the Jordan Center for the Advanced Study of Russia,
+    Co-Director of the NYU Center for Social Media, AI, and Politcs (CSMAP), Professor
+    of Politics with affiliated appointments in Russian and Slavic Studies and Data
+    Science at New York University.
 
 
-    Tucker''s research originally focused on comparative politics, examining mass political behavior
-    in East-Central Europe and the former Soviet Union, including elections, voting
-    behavior, public opinion, and protest movements. For over a decade, he has also explored
-    social and digital media''s intersection with politics through CSMAP, studying
-    echo chambers, polarization, foreign influence campaigns, and generative AI''s
-    political implications.
+    Tucker''s research originally focused on comparative politics, examining mass
+    political behavior in East-Central Europe and the former Soviet Union, including
+    elections, voting behavior, public opinion, and protest movements. For over a
+    decade, he has also explored social and digital media''s intersection with politics
+    through CSMAP, studying echo chambers, polarization, foreign influence campaigns,
+    and generative AI''s political implications.
 
 
     His published works include *Regional Economic Voting* (Cambridge University Press,
@@ -33,9 +37,9 @@ about:
 
     His research appears in prestigious journals including Science, Nature, the American
     Political Science Review, the American Journal of Political Science, and the Proceedings
-    of the National Academy of Sciences. Clarivate included him in their 2024 and 2025 top
-    1% most-cited researchers globally. In 2006, he received the Emerging Scholar
-    Award for Elections and Voting Behavior research.
+    of the National Academy of Sciences. Clarivate included him in their 2024 and
+    2025 top 1% most-cited researchers globally. In 2006, he received the Emerging
+    Scholar Award for Elections and Voting Behavior research.
 
     '
   research_interests:
@@ -252,6 +256,11 @@ teaching:
     syllabus_url: ''
 media:
   press:
+  - outlet: CNBC
+    title: We've seen a 'TikTokification' of social media over the last few years,
+      says NYU's Joshua Tucker
+    date: ''
+    url: https://www.cnbc.com/video/2026/02/18/weve-seen-a-tiktokification-of-social-media-over-the-last-few-years-says-nyus-joshua-tucker.html
   - outlet: Wired
     title: AI-Generated Anti-ICE Videos Are Getting the Fanfic Treatment
     date: '2026-01-29'
@@ -841,22 +850,23 @@ books:
   year: 2017
   publisher: Princeton University Press
   series: Princeton Studies in Political Behavior
-  description: "It has long been assumed that the historical legacy of Soviet Communism
-    would have an important effect on post-communist states. However, prior research
-    has focused primarily on the institutional legacy of communism. Communism's Shadow
-    instead turns the focus to the individuals who inhabit post-communist countries,
-    presenting a rigorous assessment of the legacy of communism on political attitudes.\n\n
-    Post-communist citizens hold political, economic, and social opinions that consistently
-    differ from individuals in other countries. Grigore Pop-Eleches and Joshua Tucker
-    introduce two distinct frameworks to explain these differences, the first of which
-    focuses on the effects of living in a post-communist country, and the second on
-    living through communism. Drawing on large-scale research encompassing post-communist
-    states and other countries around the globe, the authors demonstrate that living
-    through communism has a clear, consistent influence on why citizens in post-communist
-    countries are, on average, less supportive of democracy and markets and more
-    supportive of state-provided social welfare. The longer citizens have lived through
-    communism, especially as adults, the greater their support for beliefs associated
-    with communist ideology\u2014the one exception being opinions regarding gender equality."
+  description: "It has long been assumed that the historical legacy of Soviet Communism\
+    \ would have an important effect on post-communist states. However, prior research\
+    \ has focused primarily on the institutional legacy of communism. Communism's\
+    \ Shadow instead turns the focus to the individuals who inhabit post-communist\
+    \ countries, presenting a rigorous assessment of the legacy of communism on political\
+    \ attitudes.\n\n Post-communist citizens hold political, economic, and social\
+    \ opinions that consistently differ from individuals in other countries. Grigore\
+    \ Pop-Eleches and Joshua Tucker introduce two distinct frameworks to explain these\
+    \ differences, the first of which focuses on the effects of living in a post-communist\
+    \ country, and the second on living through communism. Drawing on large-scale\
+    \ research encompassing post-communist states and other countries around the globe,\
+    \ the authors demonstrate that living through communism has a clear, consistent\
+    \ influence on why citizens in post-communist countries are, on average, less\
+    \ supportive of democracy and markets and more supportive of state-provided social\
+    \ welfare. The longer citizens have lived through communism, especially as adults,\
+    \ the greater their support for beliefs associated with communist ideology—the\
+    \ one exception being opinions regarding gender equality."
   cover_image: ''
   purchase_url: https://press.princeton.edu/books/hardcover/9780691175584/communisms-shadow
   reviews: 'Reviewed in: Foreign Affairs, Slavic Review, The Journal of Politics,
@@ -868,7 +878,15 @@ books:
   authors: Joshua A. Tucker
   year: 2006
   publisher: Cambridge University Press
-  description: This book examines the effect of economic conditions on election results in five post-communist countries--Russia, Poland, Hungary, Slovakia, and the Czech Republic--in the first decade of post-communist elections. It is the first book length study of economic voting outside of established democracies, as well as one of the few comparative studies of voting in post-communist countries generally. The study relies on an original database composed of regional level economic, demographic, and electoral data, and the analysis features a broadly based comparative assessment of the findings across all twenty elections as well as more focused case study analysis.
+  description: This book examines the effect of economic conditions on election results
+    in five post-communist countries--Russia, Poland, Hungary, Slovakia, and the Czech
+    Republic--in the first decade of post-communist elections. It is the first book
+    length study of economic voting outside of established democracies, as well as
+    one of the few comparative studies of voting in post-communist countries generally.
+    The study relies on an original database composed of regional level economic,
+    demographic, and electoral data, and the analysis features a broadly based comparative
+    assessment of the findings across all twenty elections as well as more focused
+    case study analysis.
   cover_image: ''
   purchase_url: https://www.cambridge.org/us/universitypress/subjects/politics-international-relations/comparative-politics/regional-economic-voting-russia-poland-hungary-slovakia-and-czech-republic-19901999?format=PB&isbn=9780521672559
   reviews: 'Reviewed in: Perspectives on Politics, Comparative Political Studies,
