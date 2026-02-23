@@ -1,0 +1,6 @@
+scholarly
+beautifulsoup4
+requests
+pdfplumber
+PyYAML
+rich
