@@ -37,8 +37,81 @@ HEADERS = {
 # Metadata extraction
 # ---------------------------------------------------------------------------
 
+def _parse_iso_or_common(date_raw: str) -> str:
+    """Try to parse an ISO or human-readable date string → 'YYYY-MM-DD'."""
+    if not date_raw:
+        return ""
+    # ISO-style: 2026-02-18T12:21:04+0000 or 2026-02-18
+    iso_m = re.match(r"(\d{4}-\d{2}-\d{2})", date_raw)
+    if iso_m:
+        return iso_m.group(1)
+    for fmt in ("%B %d, %Y", "%b %d, %Y", "%d %B %Y"):
+        try:
+            return datetime.strptime(date_raw.strip(), fmt).strftime("%Y-%m-%d")
+        except ValueError:
+            continue
+    return ""
+
+
+def _extract_date(soup: BeautifulSoup, url: str) -> str:
+    """
+    Try multiple signals to extract a publication date, in priority order:
+    1. article:published_time meta property (used by many news sites)
+    2. og:article:published_time
+    3. Common date-named meta tags (parsely-pub-date, sailthru.date, etc.)
+    4. JSON-LD structured data (datePublished / uploadDate)
+    5. <time> HTML element (datetime attribute or text)
+    6. Date pattern in the URL itself (e.g. /2026/02/18/)
+    """
+    import json
+
+    def meta_content(*props):
+        for prop in props:
+            tag = soup.find("meta", property=prop) or soup.find("meta", attrs={"name": prop})
+            if tag and tag.get("content"):
+                return tag["content"].strip()
+        return ""
+
+    # 1 & 2: article:published_time (with or without "og:" prefix)
+    raw = meta_content("article:published_time", "og:article:published_time",
+                       "article:modified_time", "parsely-pub-date",
+                       "sailthru.date", "DC.date", "pubdate", "published_time")
+    date_str = _parse_iso_or_common(raw)
+    if date_str:
+        return date_str
+
+    # 3: JSON-LD structured data
+    for script in soup.find_all("script", type="application/ld+json"):
+        try:
+            data = json.loads(script.string or "")
+            if not isinstance(data, dict):
+                continue
+            raw = (data.get("datePublished") or data.get("dateCreated")
+                   or data.get("uploadDate") or "")
+            date_str = _parse_iso_or_common(raw)
+            if date_str:
+                return date_str
+        except (json.JSONDecodeError, AttributeError):
+            continue
+
+    # 4: <time> element
+    time_el = soup.find("time")
+    if time_el:
+        raw = time_el.get("datetime") or time_el.get_text(strip=True)
+        date_str = _parse_iso_or_common(raw)
+        if date_str:
+            return date_str
+
+    # 5: Date pattern in URL — e.g. /2026/02/18/ or /2026-02-18/
+    url_m = re.search(r"/(20\d{2})[/-](\d{2})[/-](\d{2})[/-]", url)
+    if url_m:
+        return f"{url_m.group(1)}-{url_m.group(2)}-{url_m.group(3)}"
+
+    return ""
+
+
 def fetch_metadata(url: str) -> dict:
-    """Fetch a URL and extract Open Graph / meta tags / page title."""
+    """Fetch a URL and extract Open Graph / meta tags / JSON-LD / page title."""
     console.print(f"[cyan]Fetching: {url}[/cyan]")
     try:
         resp = requests.get(url, headers=HEADERS, timeout=15)
@@ -49,33 +122,21 @@ def fetch_metadata(url: str) -> dict:
 
     soup = BeautifulSoup(resp.text, "html.parser")
 
-    def og(prop):
-        tag = soup.find("meta", property=f"og:{prop}") or soup.find("meta", attrs={"name": prop})
+    def meta(prop=None, name=None):
+        """Find a meta tag by property or name attribute."""
+        tag = None
+        if prop:
+            tag = soup.find("meta", property=prop)
+        if not tag and name:
+            tag = soup.find("meta", attrs={"name": name})
         return tag["content"].strip() if tag and tag.get("content") else ""
 
-    title = og("title") or (soup.title.string.strip() if soup.title else "")
-    description = og("description")
-    site_name = og("site_name")
-    published_time = og("article:published_time") or og("published_time")
+    title = meta("og:title") or (soup.title.string.strip() if soup.title else "")
+    description = meta("og:description", name="description")
+    site_name = meta("og:site_name")
 
-    # Try to parse date
-    date_str = ""
-    if published_time:
-        try:
-            date_str = datetime.fromisoformat(published_time[:10]).strftime("%Y-%m-%d")
-        except ValueError:
-            pass
-    if not date_str:
-        # Look for a <time> element
-        time_el = soup.find("time")
-        if time_el:
-            dt = time_el.get("datetime") or time_el.get_text(strip=True)
-            for fmt in ("%Y-%m-%d", "%B %d, %Y", "%b %d, %Y"):
-                try:
-                    date_str = datetime.strptime(dt[:10] if fmt == "%Y-%m-%d" else dt, fmt).strftime("%Y-%m-%d")
-                    break
-                except ValueError:
-                    continue
+    # --- Date extraction (try multiple sources in priority order) ---
+    date_str = _extract_date(soup, url)
 
     # Outlet / publisher name
     outlet = site_name
