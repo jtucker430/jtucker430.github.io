@@ -1,9 +1,8 @@
 """
-add_from_url.py - Add a single piece of content by URL.
+add_from_url.py - Add a media mention or commentary piece by URL.
 
-The user provides a URL; this script fetches the page, extracts metadata,
-prompts the user to classify and confirm, then writes the entry to the
-appropriate data file and pushes to GitHub.
+Fetches the page, extracts title/date/outlet/excerpt, and writes the entry
+to the appropriate data file. For publications, use add_publication.py instead.
 
 Usage:
     python3 scripts/add_from_url.py <URL>
@@ -25,7 +24,7 @@ from rich.panel import Panel
 from rich.prompt import Prompt, Confirm
 
 sys.path.insert(0, os.path.dirname(__file__))
-from config import PUBLICATIONS_YAML, SITE_CONTENT_YAML, COMMENTARY_DIR, REPO_ROOT
+from config import SITE_CONTENT_YAML, COMMENTARY_DIR, REPO_ROOT
 
 console = Console()
 HEADERS = {
@@ -203,39 +202,6 @@ def append_media_press(meta: dict) -> None:
     console.print(f"[green]Added media mention to site_content.yml[/green]")
 
 
-def append_publication(meta: dict) -> None:
-    """Append a publication entry to publications.yml."""
-    with open(PUBLICATIONS_YAML, "r") as f:
-        existing = yaml.safe_load(f)
-
-    year_str = meta["date"][:4] if meta["date"] else "0"
-    slug = re.sub(r"[^a-z0-9]+", "-", meta["title"].lower()).strip("-")[:50]
-    entry = {
-        "id": f"tucker-{year_str}-{slug}",
-        "title": meta["title"],
-        "authors": "Tucker, Joshua A.",
-        "year": int(year_str) if year_str.isdigit() else 0,
-        "venue": meta["outlet"],
-        "volume_issue_pages": "",
-        "doi": "",
-        "type": "journal_article",
-        "abstract": meta["description"],
-        "tags": [],
-        "awards": [],
-        "links": {
-            "published": meta["url"],
-            "preprint": "",
-            "appendix": "",
-            "replication": "",
-        },
-    }
-    existing.insert(0, entry)
-
-    with open(PUBLICATIONS_YAML, "w") as f:
-        yaml.dump(existing, f, allow_unicode=True, default_flow_style=False, sort_keys=False)
-    console.print(f"[green]Added publication to publications.yml[/green]")
-
-
 # ---------------------------------------------------------------------------
 # Git helpers
 # ---------------------------------------------------------------------------
@@ -301,24 +267,15 @@ def main():
     console.print("\n[bold]What type of content is this?[/bold]")
     console.print("  1) Commentary (op-ed, blog post, policy piece)")
     console.print("  2) Media mention (interview, press quote, news article about you)")
-    console.print("  3) Publication (journal article, working paper, book chapter)")
-    choice = Prompt.ask("Enter 1, 2, or 3", choices=["1", "2", "3"])
+    console.print("[dim]  For publications, use: python3 scripts/add_publication.py <URL>[/dim]")
+    choice = Prompt.ask("Enter 1 or 2", choices=["1", "2"])
 
     if choice == "1":
         append_commentary(meta)
         commit_msg = f"Add commentary: {meta['title'][:60]}"
-    elif choice == "2":
+    else:
         append_media_press(meta)
         commit_msg = f"Add media mention: {meta['title'][:60]}"
-    else:
-        # For publications, ask for extra fields
-        meta["type"] = Prompt.ask(
-            "Publication type",
-            choices=["journal_article", "working_paper", "under_review", "book_chapter", "book", "other"],
-            default="journal_article",
-        )
-        append_publication(meta)
-        commit_msg = f"Add publication: {meta['title'][:60]}"
 
     if Confirm.ask(f"\nCommit and push to GitHub? ('{commit_msg}')"):
         git_commit_and_push(commit_msg)
