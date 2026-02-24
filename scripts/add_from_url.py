@@ -5,7 +5,8 @@ Fetches the page, extracts title/date/outlet/excerpt, and writes the entry
 to the appropriate data file. For publications, use add_publication.py instead.
 
 Usage:
-    python3 scripts/add_from_url.py <URL>
+    python3 scripts/add_from_url.py <URL>   # pre-fill from URL
+    python3 scripts/add_from_url.py          # enter everything manually
 """
 
 from __future__ import annotations
@@ -224,21 +225,32 @@ def git_commit_and_push(message: str) -> bool:
 
 def confirm_and_edit(meta: dict) -> dict | None:
     """Show the extracted metadata and let user edit fields before saving."""
-    console.print(Panel(
-        f"[bold]Title:[/bold]   {meta['title']}\n"
-        f"[bold]Date:[/bold]    {meta['date']}\n"
-        f"[bold]Outlet:[/bold]  {meta['outlet']}\n"
-        f"[bold]URL:[/bold]     {meta['url']}\n"
-        f"[bold]Excerpt:[/bold] {meta['description'][:120]}...",
-        title="Extracted Metadata",
-        border_style="cyan",
-    ))
+    if meta.get("title"):
+        # Pre-filled from URL — show panel and let user confirm or edit
+        console.print(Panel(
+            f"[bold]Title:[/bold]   {meta['title']}\n"
+            f"[bold]Date:[/bold]    {meta['date']}\n"
+            f"[bold]Outlet:[/bold]  {meta['outlet']}\n"
+            f"[bold]URL:[/bold]     {meta['url']}\n"
+            f"[bold]Excerpt:[/bold] {(meta['description'] or '')[:120]}",
+            title="Extracted Metadata",
+            border_style="cyan",
+        ))
+        if Confirm.ask("Does this look right? (you can edit individual fields)"):
+            return meta
+    else:
+        console.print("[dim]No URL provided — entering all fields manually.[/dim]")
 
-    if not Confirm.ask("Does this look right? (you can edit individual fields)"):
-        meta["title"] = Prompt.ask("Title", default=meta["title"])
-        meta["date"] = Prompt.ask("Date (YYYY-MM-DD)", default=meta["date"])
-        meta["outlet"] = Prompt.ask("Outlet / publisher", default=meta["outlet"])
-        meta["description"] = Prompt.ask("Excerpt / description", default=meta["description"])
+    # Prompt for all fields (either editing pre-filled data or fresh manual entry)
+    meta["title"]       = Prompt.ask("Title", default=meta.get("title", ""))
+    meta["date"]        = Prompt.ask("Date (YYYY-MM-DD)", default=meta.get("date", ""))
+    meta["outlet"]      = Prompt.ask("Outlet / publisher", default=meta.get("outlet", ""))
+    meta["url"]         = Prompt.ask("URL", default=meta.get("url", ""))
+    meta["description"] = Prompt.ask("Excerpt / description", default=meta.get("description", ""))
+
+    if not meta["title"]:
+        console.print("[red]Title is required.[/red]")
+        return None
 
     return meta
 
@@ -248,17 +260,17 @@ def confirm_and_edit(meta: dict) -> dict | None:
 # ---------------------------------------------------------------------------
 
 def main():
-    if len(sys.argv) < 2:
-        console.print("[red]Usage: python3 scripts/add_from_url.py <URL>[/red]")
-        sys.exit(1)
+    prefill: dict = {}
 
-    url = sys.argv[1]
-    meta = fetch_metadata(url)
-    if not meta or not meta.get("title"):
-        console.print("[red]Could not extract metadata from that URL. Please check the URL and try again.[/red]")
-        sys.exit(1)
+    if len(sys.argv) >= 2:
+        prefill = fetch_metadata(sys.argv[1])
+        if not prefill:
+            console.print("[yellow]Could not fetch URL — continuing with manual entry.[/yellow]")
+            prefill = {"url": sys.argv[1]}
+    else:
+        console.print("[dim]No URL provided — entering all fields manually.[/dim]")
 
-    meta = confirm_and_edit(meta)
+    meta = confirm_and_edit(prefill)
     if meta is None:
         console.print("[yellow]Cancelled.[/yellow]")
         return
