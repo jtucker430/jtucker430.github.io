@@ -162,6 +162,16 @@ def scrape_one_page(url: str) -> list:
         excerpt_el = li.select_one("div.entryBlock-excerpt")
         excerpt = excerpt_el.get_text(strip=True) if excerpt_el else ""
 
+        # Author byline — try common CSMAP selectors, then a "By ..." pattern in the excerpt
+        author_el = (li.select_one("div.entryBlock-authors")
+                     or li.select_one("p.entryBlock-authors")
+                     or li.select_one("address"))
+        author_text = author_el.get_text(strip=True) if author_el else ""
+        if not author_text:
+            by_m = re.search(r"\bBy\s+(.+?)(?:\s*[,|]|\s*$)", excerpt, re.IGNORECASE)
+            if by_m:
+                author_text = by_m.group(1).strip()
+
         # Venue (for research items, it comes after the excerpt — not always present)
         # We'll leave it blank and let it be filled in when the user reviews
         venue = ""
@@ -173,6 +183,7 @@ def scrape_one_page(url: str) -> list:
             "type": content_type,
             "venue": venue,
             "excerpt": excerpt,
+            "author_text": author_text,
             "raw_type": type_label,
         })
 
@@ -204,6 +215,25 @@ def fetch_all_profile_items() -> list:
 
     console.print(f"[green]Found {len(unique)} unique items on CSMAP profile.[/green]")
     return unique
+
+
+# ---------------------------------------------------------------------------
+# Authorship check
+# ---------------------------------------------------------------------------
+
+def _tucker_is_author(item: dict) -> bool:
+    """
+    Return True if Tucker appears to be an author of this item, or if we
+    cannot determine authorship from the listing (in which case we give the
+    benefit of the doubt and include the item).
+
+    For media items this check is not used — they are inherently about Tucker.
+    """
+    author_text = item.get("author_text", "").lower()
+    if not author_text:
+        # No byline found on the listing page — trust the profile and include.
+        return True
+    return "tucker" in author_text or "joshua" in author_text
 
 
 # ---------------------------------------------------------------------------
@@ -285,17 +315,32 @@ def scan(verbose: bool = True) -> dict:
     commentary_proposals = []
     media_proposals = []
 
+    filtered_count = 0
     for item in all_items:
         t = normalize_title(item["title"])
         if item["type"] == "publications":
             if t not in existing_pubs:
-                pub_proposals.append(build_publication_proposal(item))
+                if _tucker_is_author(item):
+                    pub_proposals.append(build_publication_proposal(item))
+                else:
+                    filtered_count += 1
+                    if verbose:
+                        console.print(f"[dim]  Skipped (Tucker not in byline): {item['title'][:70]}[/dim]")
         elif item["type"] == "commentary":
             if t not in existing_commentary:
-                commentary_proposals.append(build_commentary_proposal(item))
+                if _tucker_is_author(item):
+                    commentary_proposals.append(build_commentary_proposal(item))
+                else:
+                    filtered_count += 1
+                    if verbose:
+                        console.print(f"[dim]  Skipped (Tucker not in byline): {item['title'][:70]}[/dim]")
         elif item["type"] == "media":
+            # Media items are inherently Tucker appearances — no author check needed.
             if t not in existing_media:
                 media_proposals.append(build_media_proposal(item))
+
+    if verbose and filtered_count:
+        console.print(f"[dim]Filtered out {filtered_count} item(s) where Tucker was not confirmed as author.[/dim]")
 
     if verbose:
         total = len(pub_proposals) + len(commentary_proposals) + len(media_proposals)
