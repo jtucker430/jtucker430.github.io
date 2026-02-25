@@ -1,9 +1,15 @@
 """
 scan_csmap.py - Scan csmapnyu.org for new Tucker content.
 
-Scrapes the Joshua Tucker profile page on CSMAP, which aggregates all associated
-publications, media appearances, and commentary. Compares against existing
-_data/publications.yml, _data/site_content.yml, and _commentary/ files.
+Two sources are scraped:
+
+  1. Tucker's profile page (/people/joshua-a-tucker) — publications and
+     commentary only. Items are filtered to those where Tucker appears as
+     an author in the byline.
+
+  2. The CSMAP media page (/impact/media) — all CSMAP media appearances.
+     Each entry's description names the CSMAP researcher featured; only
+     entries that mention Tucker are kept.
 
 Returns proposals of three types: "publications", "commentary", "media"
 
@@ -34,22 +40,21 @@ from config import (
 
 console = Console()
 TUCKER_PROFILE_URL = f"{CSMAP_BASE_URL}/people/joshua-a-tucker"
+CSMAP_MEDIA_URL    = f"{CSMAP_BASE_URL}/impact/media"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (academic website updater; contact: joshua.tucker@nyu.edu)"
 }
 
-# typeLabel text → internal type
+# typeLabel text → internal type (profile page only; media is scraped separately)
 TYPE_MAP = {
     "journal article": "publications",
-    "working paper": "publications",
-    "report": "publications",
-    "book": "publications",
-    "book chapter": "publications",
-    "policy": "commentary",
-    "commentary": "commentary",
-    "news": "commentary",
-    "in the media": "media",
-    "media": "media",
+    "working paper":   "publications",
+    "report":          "publications",
+    "book":            "publications",
+    "book chapter":    "publications",
+    "policy":          "commentary",
+    "commentary":      "commentary",
+    "news":            "commentary",
 }
 
 
@@ -217,6 +222,76 @@ def fetch_all_profile_items() -> list:
     return unique
 
 
+def _tucker_in_text(text: str) -> bool:
+    """Return True if Tucker's name appears in the given text (case-insensitive)."""
+    return "tucker" in text.lower()
+
+
+def scrape_media_page(url: str) -> list:
+    """Parse one page of the CSMAP media listing; return only Tucker entries."""
+    soup = get_soup(url)
+    items = []
+
+    for li in soup.select("li.entryBlock"):
+        h3_a = li.select_one("header h3 a")
+        if not h3_a:
+            continue
+        title = h3_a.get_text(strip=True)
+        href = h3_a.get("href", "")
+        link = href if href.startswith("http") else CSMAP_BASE_URL + href
+
+        date_el = li.select_one("p.entryBlock-sub")
+        date_str = parse_date(date_el.get_text(strip=True)) if date_el else ""
+
+        excerpt_el = li.select_one("div.entryBlock-excerpt")
+        excerpt = excerpt_el.get_text(strip=True) if excerpt_el else ""
+
+        # The description on the media page names the featured CSMAP researcher.
+        # Only keep entries where Tucker is mentioned in the description.
+        if not _tucker_in_text(excerpt):
+            continue
+
+        items.append({
+            "title": title,
+            "link": link,
+            "date": date_str,
+            "type": "media",
+            "venue": "",
+            "excerpt": excerpt,
+            "author_text": "",
+            "raw_type": "media",
+        })
+
+    return items
+
+
+def fetch_media_mentions() -> list:
+    """Fetch Tucker-specific media mentions from the CSMAP media page."""
+    console.print(f"[bold cyan]Fetching CSMAP media page: {CSMAP_MEDIA_URL}[/bold cyan]")
+    soup = get_soup(CSMAP_MEDIA_URL)
+    total_pages = get_total_pages(soup)
+    console.print(f"[dim]Detected {total_pages} page(s) of media content.[/dim]")
+
+    all_items = scrape_media_page(CSMAP_MEDIA_URL)
+
+    for page in range(2, total_pages + 1):
+        page_url = f"{CSMAP_MEDIA_URL}?page={page}"
+        console.print(f"[dim]  Fetching page {page}/{total_pages}...[/dim]")
+        all_items.extend(scrape_media_page(page_url))
+
+    # Deduplicate by normalized title
+    seen = set()
+    unique = []
+    for item in all_items:
+        key = normalize_title(item["title"])
+        if key not in seen:
+            seen.add(key)
+            unique.append(item)
+
+    console.print(f"[green]Found {len(unique)} Tucker media mention(s) on CSMAP media page.[/green]")
+    return unique
+
+
 # ---------------------------------------------------------------------------
 # Authorship check
 # ---------------------------------------------------------------------------
@@ -309,14 +384,15 @@ def scan(verbose: bool = True) -> dict:
     existing_commentary = load_existing_commentary_titles()
     existing_media = load_existing_media_titles()
 
-    all_items = fetch_all_profile_items()
+    # --- Profile page: publications and commentary only ---
+    profile_items = fetch_all_profile_items()
 
     pub_proposals = []
     commentary_proposals = []
     media_proposals = []
 
     filtered_count = 0
-    for item in all_items:
+    for item in profile_items:
         t = normalize_title(item["title"])
         if item["type"] == "publications":
             if t not in existing_pubs:
@@ -334,13 +410,16 @@ def scan(verbose: bool = True) -> dict:
                     filtered_count += 1
                     if verbose:
                         console.print(f"[dim]  Skipped (Tucker not in byline): {item['title'][:70]}[/dim]")
-        elif item["type"] == "media":
-            # Media items are inherently Tucker appearances — no author check needed.
-            if t not in existing_media:
-                media_proposals.append(build_media_proposal(item))
+        # Media items do not appear on the profile page — handled separately below.
 
     if verbose and filtered_count:
         console.print(f"[dim]Filtered out {filtered_count} item(s) where Tucker was not confirmed as author.[/dim]")
+
+    # --- Media page: Tucker-specific mentions only ---
+    for item in fetch_media_mentions():
+        t = normalize_title(item["title"])
+        if t not in existing_media:
+            media_proposals.append(build_media_proposal(item))
 
     if verbose:
         total = len(pub_proposals) + len(commentary_proposals) + len(media_proposals)
