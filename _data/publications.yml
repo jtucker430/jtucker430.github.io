@@ -3485,15 +3485,15 @@
     preprint: ''
     appendix: ''
     replication: ''
-- id: allcott-etal-2025-political-advertising
+- id: allcott-etal-2026-political-advertising
   title: The Effects of Political Advertising on Facebook and Instagram Before the
     2020 US Election
   authors: Allcott, Hunt, Matthew Gentzkow, Ro'ee Levy, et al., and Joshua A. Tucker
-  year: 2025
-  venue: NBER Working Paper 33818
+  year: 2026
+  venue: Nature Human Behaviour
   volume_issue_pages: ''
-  doi: 10.3386/w33818
-  type: working_paper
+  doi: 10.1038/s41562-025-02328-w
+  type: article
   abstract: The study randomized subsets of 36,906 Facebook users and 25,925 Instagram
     users to have political ads removed for six weeks before the 2020 US presidential
     election. Found no detectable effects on political knowledge, polarization, election
@@ -3504,7 +3504,7 @@
   - Media Consumption
   awards: []
   links:
-    published: https://www.nber.org/papers/w33818
+    published: https://www.nature.com/articles/s41562-025-02328-w
     preprint: ''
     appendix: ''
     replication: ''
