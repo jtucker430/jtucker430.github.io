@@ -1,6 +1,8 @@
 main:
   - title: "About"
     url: /
+  - title: "Bio"
+    url: /bio/
   - title: "Research"
     url: /research/
   - title: "Books"
