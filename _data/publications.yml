@@ -1,6 +1,44 @@
+- id: tucker-2026-how-deceptive-online-networks-reached-millions-in-
+  title: How deceptive online networks reached millions in the US 2020 elections
+  authors: Appel, Ruth E., Kim, Young Mie, Pan, Jennifer, Xu, Yiqing, Nimmo, Ben,
+    Thomas, Daniel Robert, Allcott, Hunt, Barberá, Pablo, Brown, Taylor, Crespo-Tenorio,
+    Adriana, Dimmery, Drew, Freelon, Deen, Gentzkow, Matthew, González-Bailón, Sandra,
+    Guess, Andrew M., Iyengar, Shanto, Lazer, David, Malhotra, Neil, Moehler, Devra,
+    Nyhan, Brendan, Settle, Jaime, Thorson, Emily, Tromble, Rebekah, Velasco Rivera,
+    Carlos, Wilkins, Arjun, Wojcieszak, Magdalena, Xiong, Beixian, Kiewiet de Jonge,
+    Chad, Franco, Annie, Mason, Winter, Stroud, Natalie Jomini, Tucker, Joshua A.
+  year: 2026
+  venue: Nature Human Behaviour
+  volume_issue_pages: ''
+  doi: 10.1038/s41562-026-02435-2
+  type: journal_article
+  abstract: Deceptive online networks are coordinated efforts that use identity deception
+    to pursue strategic political or financial goals. During the US 2020 elections,
+    these networks reached at least 37 million Facebook and 3 million Instagram users,
+    representing 15% and 2% of the platforms’ active US adult users, respectively.
+    Only 3 networks out of 49—1 network with explicitly political aims and 2 that
+    appeared to use politics as a lure for profit—were responsible for over 70% of
+    users reached. Notably, accounts unaffiliated with the networks played an important
+    role in facilitating this reach by resharing content the three networks produced.
+    Deceptive networks, regardless of whether their goals were political or financial,
+    reached users who were older, more conservative, more frequently exposed to content
+    from untrustworthy sources, and spent more time on Facebook. Appel et al. found
+    that deceptive networks reached over 37 million Facebook and 3 million Instagram
+    users during the 2020 US elections, with the majority of this exposure driven
+    by 3 networks and amplified by ordinary users resharing the content.
+  tags:
+  - Elite & Mass Political Behavior
+  - Foreign Influence Campaigns
+  - Online Information Environment
+  awards: []
+  links:
+    published: https://www.nature.com/articles/s41562-026-02435-2
+    preprint: ''
+    appendix: https://static-content.springer.com/esm/art%3A10.1038%2Fs41562-026-02435-2/MediaObjects/41562_2026_2435_MOESM1_ESM.pdf
+    replication: https://static-content.springer.com/esm/art%3A10.1038%2Fs41562-026-02435-2/MediaObjects/41562_2026_2435_MOESM1_ESM.pdf
 - id: tucker-2025-it-works-when-it-works-measuring-the-direct-andind
-  title: 'It Works When It Works: Measuring the Direct and Indirect Effects of AI Labels
-    on Political Images'
+  title: 'It Works When It Works: Measuring the Direct and Indirect Effects of AI
+    Labels on Political Images'
   authors: Sanderson, Zeve, Zhong, Wei, and Tucker, Joshua A.
   year: 2025
   venue: OSF Preprints / SocArXiv
@@ -18,13 +56,13 @@
     of content labeling on perceptions of political images—their perceived provenance,
     veracity, and engagement intention. We find that AI labels effectively communicate
     content provenance, significantly reducing perceived human involvement in image
-    creation regardless of whether images were actually AI-generated. 
+    creation regardless of whether images were actually AI-generated.
   tags:
   - Online Information Environment
   awards: []
   links:
     published: ''
-    preprint: 'https://osf.io/preprints/socarxiv/nf785_v1'
+    preprint: https://osf.io/preprints/socarxiv/nf785_v1
     appendix: ''
     replication: ''
 - id: persily-tucker-2020-social-media-democracy
@@ -3494,7 +3532,15 @@
   volume_issue_pages: ''
   doi: 10.1038/s41562-025-02328-w
   type: article
-  abstract: We study the effects of social media political advertising by randomizing subsets of 36,906 Facebook users and 25,925 Instagram users to have political ads removed from their news feeds for 6 weeks before the 2020 US presidential election. We show that most presidential ads were targeted towards parties’ own supporters and that fundraising ads were the most common. On both Facebook and Instagram, we found no detectable effects of removing political ads on political knowledge, polarization, perceived legitimacy of the election, political participation (including campaign contributions), candidate favourability and turnout. This was true overall and for both Democrats and Republicans separately.
+  abstract: We study the effects of social media political advertising by randomizing
+    subsets of 36,906 Facebook users and 25,925 Instagram users to have political
+    ads removed from their news feeds for 6 weeks before the 2020 US presidential
+    election. We show that most presidential ads were targeted towards parties’ own
+    supporters and that fundraising ads were the most common. On both Facebook and
+    Instagram, we found no detectable effects of removing political ads on political
+    knowledge, polarization, perceived legitimacy of the election, political participation
+    (including campaign contributions), candidate favourability and turnout. This
+    was true overall and for both Democrats and Republicans separately.
   tags:
   - Online Information Environment
   - Elections & Voting
@@ -3502,7 +3548,7 @@
   awards: []
   links:
     published: https://www.nature.com/articles/s41562-025-02328-w
-    preprint: https://www.nber.org/papers/w33818 
+    preprint: https://www.nber.org/papers/w33818
     appendix: ''
     replication: ''
 - id: abrajano-etal-2024-spanish-language-misinfo
