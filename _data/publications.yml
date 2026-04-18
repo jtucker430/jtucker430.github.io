@@ -1,3 +1,35 @@
+- id: tucker-2026-the-partisan-effects-of-social-media-bans
+  title: The Partisan Effects of Social Media Bans
+  authors: Tiago Ventura,Christopher Barrie,Margaret E. Roberts,Christopher Schwarz,Joshua
+    A. Tucker
+  year: 2026
+  venue: SocArXiv
+  volume_issue_pages: ''
+  doi: ''
+  type: working_paper
+  abstract: 'What happens to information environments when democracies ban social
+    media platforms? While a large literature examines information control under authoritarianism,
+    democratic governments have increasingly intervened in major online platforms.
+    We study a prominent case: Brazil''s 2024 national ban on the social media platform
+    X. Using an event-study design, we estimate the causal effects of the ban and
+    examine how partisan identity shaped responses. Drawing on a large sample of politically
+    engaged users and ideal-point estimates of ideology, we find strong partisan asymmetries.
+    Conservative users not aligned with the government were more likely to circumvent
+    the ban, and right-leaning news domains became markedly more prevalent on the
+    platform. We describe this dynamic as a ``sorting ratchet": the ban segmented
+    the digital public sphere along partisan lines, with effects that persisted even
+    after restrictions were lifted.'
+  tags:
+  - Elite & Mass Political Behavior
+  - Online Information Environment
+  - Partisanship
+  - Political Polarization
+  awards: []
+  links:
+    published: ''
+    preprint: https://osf.io/preprints/socarxiv/4stfw_v1
+    appendix: ''
+    replication: ''
 - id: tucker-2026-how-deceptive-online-networks-reached-millions-in-
   title: How deceptive online networks reached millions in the US 2020 elections
   authors: Appel, Ruth E., Kim, Young Mie, Pan, Jennifer, Xu, Yiqing, Nimmo, Ben,
