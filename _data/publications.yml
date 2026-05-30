@@ -32,7 +32,9 @@
     and models queried&nbsp;in&nbsp;the languages of countries with lower media freedom
     show a stronger pro-regime valence than models queried in the languages of countries
     with higher media freedom.
-  tags: []
+  tags:
+  - AI
+  - Online Information Environment
   awards: []
   links:
     published: https://www.nature.com/articles/s41586-026-10506-7
@@ -3668,6 +3670,7 @@
     comparable to supervised fine-tuned models while requiring minimal hand-labeled
     data.
   tags:
+  - AI
   - Data Science Methodology
   - Partisanship
   awards: []
