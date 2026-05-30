@@ -1,7 +1,48 @@
+- id: tucker-2026-state-media-control-influences-large-language-mode
+  title: State media control influences large language models
+  authors: Waight, Hannah, Yang, Eddie, Yuan, Yin, Messing, Solomon, Roberts, Margaret
+    E., Stewart, Brandon M., Tucker, Joshua A.
+  year: 2026
+  venue: Nature
+  volume_issue_pages: pp.1-9
+  doi: 10.1038/s41586-026-10506-7
+  type: journal_article
+  abstract: Millions of people around the world query large language models (LLMs)
+    for information. Although several studies have compellingly documented the persuasive
+    potential of these models1–10, there is limited evidence of who or what influences
+    the models themselves, leading to a flurry of concerns about which companies and
+    governments build and regulate the models. Here we show through six studies that
+    government control of the media across the world already influences the output
+    of LLMs via their training data. We use a cross-national audit to show that LLMs
+    exhibit a stronger pro-government valence in the languages of countries with lower
+    media freedom than in&nbsp;those with higher media freedom. This result is correlational,
+    so to triangulate the specific mechanism of how state media control can influence
+    LLMs, we develop a multi-part case study on China’s media. We demonstrate that
+    media scripted and curated by the Chinese state appears in LLM training datasets.
+    To evaluate the plausible effect of this inclusion, we use an open-weight model
+    to show that additional pretraining on Chinese state-coordinated media generates
+    more positive answers to prompts about Chinese political institutions and leaders.
+    We link this phenomenon to commercial models through two audit studies demonstrating
+    that prompting models in Chinese generates more positive responses about China’s
+    institutions and leaders than do the same queries in English. The combination
+    of influence and persuasive potential across languages suggests the troubling
+    conclusion that states and powerful institutions have increased strategic incentives
+    to leverage media control in the hopes of shaping LLM output. Government-controlled
+    media influences the output of large language models via their training data,
+    and models queried&nbsp;in&nbsp;the languages of countries with lower media freedom
+    show a stronger pro-regime valence than models queried in the languages of countries
+    with higher media freedom.
+  tags: []
+  awards: []
+  links:
+    published: https://www.nature.com/articles/s41586-026-10506-7
+    preprint: ''
+    appendix: https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-026-10506-7/MediaObjects/41586_2026_10506_MOESM1_ESM.pdf
+    replication: https://doi.org/10.7910/DVN/NECR2K
 - id: tucker-2026-the-partisan-effects-of-social-media-bans
   title: The Partisan Effects of Social Media Bans
-  authors: Tiago Ventura, Christopher Barrie, Margaret E. Roberts, Christopher Schwarz, Joshua
-    A. Tucker
+  authors: Tiago Ventura, Christopher Barrie, Margaret E. Roberts, Christopher Schwarz,
+    Joshua A. Tucker
   year: 2026
   venue: SocArXiv
   volume_issue_pages: ''
