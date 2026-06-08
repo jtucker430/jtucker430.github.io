@@ -260,6 +260,10 @@ teaching:
     syllabus_url: ''
 media:
   press:
+  - outlet: Nature
+    title: Will AI ruin the social sciences — or revolutionize them?
+    date: '2026-06-02'
+    url: https://www.nature.com/articles/d41586-026-01726-y
   - outlet: CNBC
     title: NYU's Joshua Tucker on the politics of training AI
     date: '2026-05-15'
