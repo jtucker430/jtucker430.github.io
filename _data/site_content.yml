@@ -260,6 +260,10 @@ teaching:
     syllabus_url: ''
 media:
   press:
+  - outlet: Slguardian
+    title: AI Disrupts the Foundations of Social Science Research
+    date: '2026-06-03'
+    url: https://slguardian.org/ai-disrupts-the-foundations-of-social-science-research/
   - outlet: South Bend Tribune
     title: Notre Dame democracy conference focuses on rise of autocratic leaders
     date: '2026-05-26'
