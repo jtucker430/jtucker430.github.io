@@ -1,3 +1,32 @@
+- id: tucker-2026-evaluating-echo-chambers-rabbit-holes-and-radicali
+  title: Evaluating Echo Chambers, Rabbit Holes, and Radicalization Pathways on YouTube
+  authors: Megan Brown, James Bisbee, Angela Lai, Richard Bonneau, Jonathan Nagler,
+    Joshua A. Tucker
+  year: 2026
+  venue: Political Communication
+  volume_issue_pages: ''
+  doi: ''
+  type: journal_article
+  abstract: To what extent does the YouTube recommendation algorithm push users into
+    echo chambers, rabbit holes, or radicalization pathways? Using a novel method
+    to estimate the ideology of YouTube videos and an original audit design, we demonstrate
+    that YouTube users are in mild ideological echo chambers, but this is primarily
+    driven by user behavior. We also demonstrate that the recommendation algorithm
+    prioritizes content that is similar to what the user is currently watching, producing
+    content rabbit holes. However, we do not find evidence of radicalization pathways
+    where users are driven into increasingly extreme content rabbit holes. Instead,
+    we find that YouTube pushes all users, regardless of ideology, toward moderately
+    conservative content and an increasingly narrow range of ideological content the
+    longer they follow YouTube’s recommendations.
+  tags:
+  - Online Information Environment
+  - Political Polarization
+  awards: []
+  links:
+    published: https://www.tandfonline.com/doi/full/10.1080/10584609.2026.2671765
+    preprint: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4114905
+    appendix: https://www.tandfonline.com/action/downloadSupplement?doi=10.1080%2F10584609.2026.2671765&file=upcp_a_2671765_sm2819.pdf
+    replication: ''
 - id: tucker-2026-state-media-control-influences-large-language-mode
   title: State media control influences large language models
   authors: Waight, Hannah, Yang, Eddie, Yuan, Yin, Messing, Solomon, Roberts, Margaret
