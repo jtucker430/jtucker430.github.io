@@ -260,6 +260,10 @@ teaching:
     syllabus_url: ''
 media:
   press:
+  - outlet: New Times
+    title: 'The New Times: ИИ: кто обучает большие языковые модели'
+    date: '2026-09-23'
+    url: https://newtimes.ru/articles/detail/252680/
   - outlet: Nature
     title: Nearly one in seven young, male white voters in the US support white nationalism
     date: '2026-09-16'
