@@ -1,3 +1,42 @@
+- id: tucker-2026-predictors-and-prevalence-of-support-for-white-nat
+  title: Predictors and prevalence of support for white nationalism in the United
+    States
+  authors: Egan, Patrick J., Bisbee, James, Tucker, Joshua A.
+  year: 2026
+  venue: Nature
+  volume_issue_pages: Vol. 657, pp.964-972
+  doi: 10.1038/s41586-026-11018-0
+  type: journal_article
+  abstract: White nationalism has become increasingly visible in American public life1–10.
+    Yet we lack knowledge of the predictors and prevalence of explicit support for
+    this ideology, as survey research has treated it as a latent construct captured
+    through indirect indicators11–15. We introduce and validate a measure that informs
+    respondents of the core tenets of the white nationalist movement and then asks
+    whether they support the movement. Expressed support is distinct from organizational
+    affiliation with the movement, which we do not measure. Here we show with three
+    national surveys of non-Hispanic white adults (conducted from 2021 to 2025) that
+    support for white nationalism is (1) higher among white people encountering personal
+    hardship and local social distress, consistent with strain theories3,16; (2) unrelated
+    to local racial composition or recent&nbsp;demographic change, complicating status
+    threat accounts4,17,18; and (3) elevated among white people with close friendships
+    primarily online, consistent with theories of extremism driven by online mobilization7,10,19.
+    Support for white nationalism is more common among white people with lower incomes
+    and education, Republicans and conservatives, and those who are politically disaffected.
+    In our national probability sample, prevalence of support&nbsp;was estimated at
+    4.9% of white adults, including 13.5% of white men aged 18–29. Support for white
+    nationalism seems to constitute a discrete dimension of white racial attitudes,
+    and many white people who endorse its core ideas are unaware of the label. Explicit
+    support for white nationalism is uncommon overall, but higher among young white
+    men, disadvantaged and politically disaffected white people, conservatives, Republicans,
+    and those with primarily online friendships.
+  tags:
+  - Online Information Environment
+  awards: []
+  links:
+    published: https://www.nature.com/articles/s41586-026-11018-0
+    preprint: ''
+    appendix: ''
+    replication: https://doi.org/10.7910/DVN/J6G51T
 - id: tucker-2026-evaluating-echo-chambers-rabbit-holes-and-radicali
   title: Evaluating Echo Chambers, Rabbit Holes, and Radicalization Pathways on YouTube
   authors: Megan Brown, James Bisbee, Angela Lai, Richard Bonneau, Jonathan Nagler,
