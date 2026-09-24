@@ -45,9 +45,9 @@ layout: single
 <div class="home-recent-pubs">
   <h3>Recent Publications <a href="/research/" class="see-all-link">See all →</a></h3>
   <div class="pub-list-home">
-    {% assign pubs = site.data.publications | sort: "year" | reverse %}
+    {% include sorted_publications.html %}
     {% assign count = 0 %}
-    {% for pub in pubs %}
+    {% for pub in sorted_pubs %}
       {% if count < 5 and pub.type != "book" %}
         {% assign count = count | plus: 1 %}
         <div class="pub-item-home">

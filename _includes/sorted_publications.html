@@ -1,0 +1,23 @@
+{% comment %}
+  Sets `sorted_pubs`: publications newest first. Sort key is `date`
+  (YYYY-MM-DD) when present, otherwise `year`. Forthcoming entries use
+  year 9999/9998/... so they stay on top. Ties keep publications.yml order.
+{% endcomment %}
+{% assign pub_keys = "" | split: "" %}
+{% for pub in site.data.publications %}
+  {% if pub.date and pub.date != "" %}
+    {% assign key_date = pub.date | append: "" %}
+  {% else %}
+    {% assign key_date = pub.year | append: "-00-00" %}
+  {% endif %}
+  {% assign tiebreak = 9999 | minus: forloop.index0 | prepend: "0000" | slice: -4, 4 %}
+  {% assign pub_key = key_date | append: "|" | append: tiebreak %}
+  {% assign pub_keys = pub_keys | push: pub_key %}
+{% endfor %}
+{% assign pub_keys = pub_keys | sort | reverse %}
+{% assign sorted_pubs = "" | split: "" %}
+{% for pub_key in pub_keys %}
+  {% assign tiebreak = pub_key | split: "|" | last | plus: 0 %}
+  {% assign pub_index = 9999 | minus: tiebreak %}
+  {% assign sorted_pubs = sorted_pubs | push: site.data.publications[pub_index] %}
+{% endfor %}

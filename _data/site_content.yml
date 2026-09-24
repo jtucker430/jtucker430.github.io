@@ -260,6 +260,10 @@ teaching:
     syllabus_url: ''
 media:
   press:
+  - outlet: Prospect Magazine
+    title: How AI learned to love the Chinese Communist Party
+    date: '2026-09-21'
+    url: https://www.prospectmagazine.co.uk/ideas/technology/75020/ai-learned-to-love-chinese-communist-party-anthropic-openai
   - outlet: Slguardian
     title: AI Disrupts the Foundations of Social Science Research
     date: '2026-06-03'

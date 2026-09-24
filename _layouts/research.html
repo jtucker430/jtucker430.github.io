@@ -44,8 +44,8 @@ layout: single
 
   <!-- Publications List -->
   <div class="publications-list" id="publications-list">
-    {% assign pubs_sorted = site.data.publications | sort: "year" | reverse %}
-    {% for pub in pubs_sorted %}
+    {% include sorted_publications.html %}
+    {% for pub in sorted_pubs %}
       {% unless pub.type == "book" %}
       <div class="pub-entry"
            data-type="{{ pub.type }}"

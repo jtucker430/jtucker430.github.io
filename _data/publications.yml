@@ -3,6 +3,7 @@
     States
   authors: Egan, Patrick J., Bisbee, James, Tucker, Joshua A.
   year: 2026
+  date: '2026-09-24'
   venue: Nature
   volume_issue_pages: Vol. 657, pp.964-972
   doi: 10.1038/s41586-026-11018-0
@@ -42,6 +43,7 @@
   authors: Megan Brown, James Bisbee, Angela Lai, Richard Bonneau, Jonathan Nagler,
     Joshua A. Tucker
   year: 2026
+  date: '2026-06-10'
   venue: Political Communication
   volume_issue_pages: ''
   doi: ''
@@ -71,6 +73,7 @@
   authors: Waight, Hannah, Yang, Eddie, Yuan, Yin, Messing, Solomon, Roberts, Margaret
     E., Stewart, Brandon M., Tucker, Joshua A.
   year: 2026
+  date: '2026-07-16'
   venue: Nature
   volume_issue_pages: pp.1-9
   doi: 10.1038/s41586-026-10506-7
@@ -151,6 +154,7 @@
     Carlos, Wilkins, Arjun, Wojcieszak, Magdalena, Xiong, Beixian, Kiewiet de Jonge,
     Chad, Franco, Annie, Mason, Winter, Stroud, Natalie Jomini, Tucker, Joshua A.
   year: 2026
+  date: '2026-04-06'
   venue: Nature Human Behaviour
   volume_issue_pages: ''
   doi: 10.1038/s41562-026-02435-2
@@ -571,7 +575,8 @@
   - Media Consumption
   - Online Information Environment
   - Partisanship
-  awards: []
+  awards:
+  - 2026 Miller Prize, Society for Political Methodology
   links:
     published: ''
     preprint: ''
@@ -3671,10 +3676,11 @@
     2020 US Election
   authors: Allcott, Hunt, Matthew Gentzkow, Ro'ee Levy, et al., and Joshua A. Tucker
   year: 2026
+  date: '2026-03-02'
   venue: Nature Human Behaviour
   volume_issue_pages: ''
   doi: 10.1038/s41562-025-02328-w
-  type: article
+  type: journal_article
   abstract: We study the effects of social media political advertising by randomizing
     subsets of 36,906 Facebook users and 25,925 Instagram users to have political
     ads removed from their news feeds for 6 weeks before the 2020 US presidential
