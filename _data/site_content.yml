@@ -260,6 +260,10 @@ teaching:
     syllabus_url: ''
 media:
   press:
+  - outlet: Newsweek
+    title: How AI upended politics and left lawmakers scrambling to pick a side
+    date: '2026-09-30'
+    url: https://www.newsweek.com/ai-politics/how-ai-upended-politics-and-left-lawmakers-scrambling-to-pick-a-side-12501075
   - outlet: New Times
     title: 'The New Times: ИИ: кто обучает большие языковые модели'
     date: '2026-09-23'
