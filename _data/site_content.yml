@@ -260,6 +260,11 @@ teaching:
     syllabus_url: ''
 media:
   press:
+  - outlet: Factlink
+    title: "How does Chinese state media control influence large language models?\n\
+      -   \tAn interview with Dr. Hannah Waight and Dr. Joshua Tucker"
+    date: '2026-08-21'
+    url: https://www.factlink.tw/p/how-does-chinese-state-media-control
   - outlet: Snopes
     title: Political AI slop is flooding social media. Could it sway the midterms
       and harm democracy?
