@@ -260,6 +260,10 @@ teaching:
     syllabus_url: ''
 media:
   press:
+  - outlet: WNYC
+    title: 'NYC-Now Podcast: "Mamdani, Fix It!”: The TikTokification of 311'
+    date: '2026-11-11'
+    url: https://podcasts.apple.com/us/podcast/mamdani-fix-it-the-tiktokification-of-311/
   - outlet: Factlink
     title: "How does Chinese state media control influence large language models?\n\
       -   \tAn interview with Dr. Hannah Waight and Dr. Joshua Tucker"
