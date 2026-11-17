@@ -1,3 +1,35 @@
+- id: tucker-2026-political-unfriending-on-facebook-evidence-from-ov
+  title: 'Political Unfriending on Facebook: Evidence from over 180 Million Users'
+  authors: Malhotra, Neil and Wojcieszak, Magdalena and Bergeron-Boutin, Olivier and
+    Guo, Fang and others and Stroud, Natalie J and Tucker, Joshua A.
+  year: 2026
+  venue: The Journal of Politics
+  volume_issue_pages: Firstview
+  doi: 10.1086/735873
+  type: journal_article
+  abstract: 'Both the public and researchers worry that Americans minimize exposure
+    to dissimilar viewpoints by severing ties with those who do not share their political
+    identities. We examine political unfriending during the 2020 U.S. election using
+    two unique datasets: aggregate behavioral data from over 180 million Facebook
+    users and a survey of 72,000 users. While unfriending is generally rare, users
+    were significantly more likely to sever politically cross-cutting ties than aligned
+    ones. This behavior fluctuated dynamically, peaking during major conflicts in
+    the political environment, such as Election Day, the January 6th attempted coup,
+    and Inauguration Day. Furthermore, cross-cutting tie severing was most pronounced
+    among individuals with strong political identities and high on-platform engagement.
+    Finally, we offer a methodological contribution, showing that traditional survey-based
+    measures of political unfriending correlate with actual on-platform behavior.'
+  tags:
+  - Elite & Mass Political Behavior
+  - Online Information Environment
+  - Partisanship
+  - Political Polarization
+  awards: []
+  links:
+    published: https://www.journals.uchicago.edu/doi/10.1086/735873
+    preprint: ''
+    appendix: https://www.journals.uchicago.edu/doi/10.1086/735873#supplementary-materials
+    replication: ''
 - id: tucker-2026-predictors-and-prevalence-of-support-for-white-nat
   title: Predictors and prevalence of support for white nationalism in the United
     States
