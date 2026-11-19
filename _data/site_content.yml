@@ -260,6 +260,10 @@ teaching:
     syllabus_url: ''
 media:
   press:
+  - outlet: AFP
+    title: Jensen, meet Bollywood. AI parody clips of Nvidia ex-boss spark titters
+    date: '2026-11-19'
+    url: https://www.afp.com/en/jensen-meet-bollywood-ai-parody-clips-nvidia-ex-boss-spark-titters
   - outlet: WNYC
     title: 'NYC-Now Podcast: "Mamdani, Fix It!”: The TikTokification of 311'
     date: '2026-11-11'
